@@ -52,7 +52,7 @@
   <% else %>
     <div class="alert alert-warning" >
       <h2>Sorry, your cart is currently empty</h2>
-      <button type="button" class="btn btn-light" ><%= link_to 'Home', :root %>
+      <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
     </div>
   <% end %>
 </section>
