@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623222000) do
+ActiveRecord::Schema.define(version: 20210401015553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,24 +35,12 @@ ActiveRecord::Schema.define(version: 20160623222000) do
   add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
   add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
-  create_table "options", force: :cascade do |t|
-    t.integer "poll_id"
-    t.string  "choice",  limit: 255
-  end
-
   create_table "orders", force: :cascade do |t|
     t.integer  "total_cents"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "stripe_charge_id"
-  end
-
-  create_table "polls", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "title",       limit: 255
-    t.text    "description"
-    t.string  "admin_url",   limit: 255
-    t.string  "voting_url",  limit: 255
+    t.string   "email"
   end
 
   create_table "products", force: :cascade do |t|
@@ -69,22 +57,14 @@ ActiveRecord::Schema.define(version: 20160623222000) do
   add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string "name",  limit: 255, null: false
-    t.string "email", limit: 255, null: false
-  end
-
-  create_table "votes", force: :cascade do |t|
-    t.integer "poll_id"
-    t.integer "option_id"
-    t.integer "priority"
-    t.string  "guest_name", limit: 255
+    t.string   "name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_foreign_key "line_items", "orders"
   add_foreign_key "line_items", "products"
-  add_foreign_key "options", "polls", name: "options_poll_id_fkey", on_delete: :cascade
-  add_foreign_key "polls", "users", name: "polls_user_id_fkey", on_delete: :cascade
   add_foreign_key "products", "categories"
-  add_foreign_key "votes", "options", name: "votes_option_id_fkey", on_delete: :cascade
-  add_foreign_key "votes", "polls", name: "votes_poll_id_fkey", on_delete: :cascade
 end

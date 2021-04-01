@@ -42,11 +42,20 @@
             <li><%= link_to 'Categories',  [:admin, :categories] %></li>
           </ul>
         </li>
+        
         <li>
           <%= link_to cart_path do %>
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
           <% end %>
         </li>
+        <% if current_user %>
+        <li>Signed in as <%= current_user.name %></li> 
+        <li><%= link_to "Logout", '/logout', class: 'btn btn-primary'%></li>
+        <% else %>
+        <li><%= link_to 'Login', '/login' %></li> 
+         <li><%= link_to "Sign Up", '/signup', class: 'btn btn-lg btn-primary' %></li>
+      <% end %>
+      
       </ul>
     </div>
   </div>
