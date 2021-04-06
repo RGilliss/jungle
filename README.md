@@ -2,6 +2,11 @@
 
 A mini e-commerce application built with Rails 4.2. Allows users to buy products and gives admins the ability to create products and categories.
 
+
+!["Screenshot of products page"](https://github.com/RGilliss/jungle/blob/master/docs/jungle-products.png?raw=true)
+!["Screenshot of my cart page"](https://github.com/RGilliss/jungle/blob/master/docs/jungle-cart.png?raw=true)
+!["Screenshot of admin categories page"](https://github.com/RGilliss/jungle/blob/master/docs/jungle-admin-categories.png?raw=true)
+!["Screenshot of admin products page"](https://github.com/RGilliss/jungle/blob/master/docs/jungle-admin-products.png?raw=true)
 ## Additional Steps for Apple M1 Machines
 
 1. Make sure that you are runnning Ruby 2.6.6 (`ruby -v`)
