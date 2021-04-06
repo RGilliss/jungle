@@ -10,8 +10,7 @@ class UsersController < ApplicationController
     else
       redirect_to '/signup'
     end
-  end  
-  
+  end
   private
 
   def user_params
